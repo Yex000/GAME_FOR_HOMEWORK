@@ -1,7 +1,7 @@
 import pygame
 import random
-import checker
-import winner, loser
+import SortIt_checker
+import SortIt_winner, SortIt_loser
 
 # Import pygame.locals for easier access to key coordinates
 # Updated to conform to flake8 and black standards
@@ -175,14 +175,14 @@ while running:
 
     if flag:
         flag = False
-        check = checker.check(position, number)
+        check = SortIt_checker.check(position, number)
         if check:
             score += 1
         else:
             hearts-=1
             
     if score == 15:
-        winner.winner()        
+        SortIt_winner.winner()        
 
     # Flip the display
     pygame.display.flip()

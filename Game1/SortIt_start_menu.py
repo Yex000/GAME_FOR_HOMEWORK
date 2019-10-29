@@ -1,5 +1,5 @@
 import pygame
-import open_main, help1, credits1
+import SortIt_open_main, SortIt_help1, SortIt_credits1
 from pygame.locals import(
     RLEACCEL
     )
@@ -55,16 +55,16 @@ while running:
             if ((play_button_rect.right > pygame.mouse.get_pos()[0] > play_button_rect.left)
                 and (play_button_rect.top < pygame.mouse.get_pos()[1] < play_button_rect.bottom)):
                 running = False
-                open_main.open_main()
+                SortIt_open_main.open_main()
                 pygame.quit()
 
             elif ((help_button_rect.right > pygame.mouse.get_pos()[0] > help_button_rect.left)
                 and (help_button_rect.top < pygame.mouse.get_pos()[1] < help_button_rect.bottom)):
-                help1.help_fn()
+                SortIt_help1.help_fn()
                 
             elif ((credits_button_rect.right > pygame.mouse.get_pos()[0] > credits_button_rect.left)
                 and (credits_button_rect.top < pygame.mouse.get_pos()[1] < credits_button_rect.bottom)):
-                credits1.credits_fn()
+                SortIt_credits1.credits_fn()
 
             elif ((exit_button_rect.right > pygame.mouse.get_pos()[0] > exit_button_rect.left)
                 and (exit_button_rect.top < pygame.mouse.get_pos()[1] < exit_button_rect.bottom)):
