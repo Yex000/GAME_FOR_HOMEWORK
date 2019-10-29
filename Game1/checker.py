@@ -1,4 +1,5 @@
 def check(pos, num):
+    ''' check if player`s answer was correct'''
     if(0 <= pos <= 150):
         return prime_check(num)
     elif (151 <= pos <= 303):
@@ -59,6 +60,7 @@ def happy_check(num):
             return True
 
 def ulam_check(num):
+    '''check if number is ulam`s one'''
     ulam_list = [0]*2
     ulam_list[0] = 1
     ulam_list[1] = 2

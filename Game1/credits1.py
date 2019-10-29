@@ -4,6 +4,7 @@ from pygame.locals import(
     )
 
 def credits_fn():
+    ''' show credits window'''
 
    
     pygame.init()
@@ -37,4 +38,4 @@ def credits_fn():
                    running = False
         pygame.display.flip()           
 
-    pygame.quit()   
+    #pygame.quit()   

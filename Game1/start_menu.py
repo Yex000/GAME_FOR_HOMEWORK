@@ -4,6 +4,7 @@ from pygame.locals import(
     RLEACCEL
     )
 pygame.init()
+pygame.mixer.init()
 
 WIDHT = 612
 HEIGHT = 900
@@ -38,6 +39,9 @@ exit_button.set_colorkey((255, 255, 255), RLEACCEL)
 exit_button_rect = exit_button.get_rect()
 exit_button_rect = exit_button_rect.move((200, 520))
 
+pygame.mixer.music.load("morning.mp3")
+pygame.mixer.music.play(loops=-1)
+
 running = True
 while running:
 
@@ -50,7 +54,9 @@ while running:
             
             if ((play_button_rect.right > pygame.mouse.get_pos()[0] > play_button_rect.left)
                 and (play_button_rect.top < pygame.mouse.get_pos()[1] < play_button_rect.bottom)):
+                running = False
                 open_main.open_main()
+                pygame.quit()
 
             elif ((help_button_rect.right > pygame.mouse.get_pos()[0] > help_button_rect.left)
                 and (help_button_rect.top < pygame.mouse.get_pos()[1] < help_button_rect.bottom)):
@@ -75,17 +81,4 @@ while running:
     
     pygame.time.delay(25)
        
-
-
-    # Fill the background with white
-#    screen.fill((255, 255, 255))
-
-#    screen.blit(background, [0,0])
-#    screen.blit(play_button, [200,100])
-#    screen.blit(help_button, [200,240])
-#    screen.blit(credits_button, [200,380])
-#    screen.blit(exit_button, [200,520])
-
-    # Flip the display
     pygame.display.flip()
-

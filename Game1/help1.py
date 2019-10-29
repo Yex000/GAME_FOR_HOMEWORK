@@ -1,5 +1,6 @@
 import pygame
 def help_fn():
+    '''create help window'''
 
     from pygame.locals import(
     RLEACCEL
@@ -36,4 +37,4 @@ def help_fn():
                    running = False
         pygame.display.flip()           
 
-    pygame.quit()
+    #pygame.quit()
