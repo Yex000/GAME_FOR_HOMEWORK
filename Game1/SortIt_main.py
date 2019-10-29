@@ -33,14 +33,14 @@ class NUMBER(pygame.sprite.Sprite):
         '''return random generated number from 1 to 100 on image on the screen'''
         super(NUMBER, self).__init__()
         self.surf = pygame.Surface((40, 40))
-        self.surf = pygame.image.load("image/rubbish.png").convert()
+        self.surf = pygame.image.load("image/rubbish.png").convert()# Texture for player (rubbish)
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect(
             center=(
                 random.randint(20, SCREEN_WIDTH-20), -25
                    )
         )
-    def update(self, pressed_keys):
+    def update(self, pressed_keys):# Reacktins for keys pressing, checker of player`s position
         ''' check if player has pressed
          a key and then make appropriate movement
         '''
@@ -67,14 +67,14 @@ class NUMBER(pygame.sprite.Sprite):
 
 def dumps(variant):
     '''change white parts of game object on transparent one''' 
-    image = pygame.image.load("{0}.png".format(variant)).convert()
+    image = pygame.image.load("{0}.png".format(variant)).convert() # Setting images for trash bins
     image.set_colorkey((255, 255, 255), RLEACCEL)
     return image
 
 
 pygame.init()
 
-font = pygame.font.SysFont('Impact', 32) 
+font = pygame.font.SysFont('Impact', 32) # Using text in the game
 text_esc = font.render('Press ESC to Quit', True, (0 ,0 ,128 ))  
 text_esc_rect = text_esc.get_rect(center = (120, 25))
 
@@ -125,7 +125,7 @@ while running:
             if event.key == K_ESCAPE:
                 running = False
     if spawn_player:
-        number = random.randint(1,99)
+        number = random.randint(1,99)# Number randomisator
         new_player = NUMBER()
         spawn_player = False
 
@@ -141,7 +141,7 @@ while running:
         center = (new_player.rect.right - 33, new_player.rect.top + 53)
     )
 
-    text_score = font.render('Your score: {}'.format(score), True, (160 ,0 ,0 ))  
+    text_score = font.render('Your score: {}'.format(score), True, (160 ,0 ,0 ))  # Score on the screen
     text_score_rect = text_esc.get_rect(center = (SCREEN_WIDTH - 60, 25))
 
     
@@ -153,6 +153,7 @@ while running:
     screen.blit(text_player, text_player_rect)
     screen.blit(text_esc, text_esc_rect)
     
+    # Player`s lifes (how many attemps he has)
     if hearts == 3:
         screen.blit(heart1, [550, 40])
         screen.blit(heart2, [500, 40])
@@ -166,14 +167,14 @@ while running:
         screen.blit(heart1, [550, 40])
 
     else:
-        loser.loser()    
+        loser.loser()# Loose screen       
     # Draw dumps
     for x in enumerate([0, 151, 302, 453]):
         dump = dumps(x[0] + 1) # makes dump
         screen.blit(dump, (x[1], 460))
 
 
-    if flag:
+    if flag: # Score change
         flag = False
         check = SortIt_checker.check(position, number)
         if check:
@@ -181,7 +182,7 @@ while running:
         else:
             hearts-=1
             
-    if score == 15:
+    if score == 15: #Win check
         SortIt_winner.winner()        
 
     # Flip the display
